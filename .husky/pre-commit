@@ -1,1 +1,25 @@
-npx lint-staged
+echo ""
+echo "🔍 Verificando archivos modificados..."
+echo ""
+
+if ! npx lint-staged; then
+  echo ""
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "❌  COMMIT RECHAZADO"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo ""
+  echo "Hay errores de lint o formato en los archivos."
+  echo ""
+  echo "💡 SOLUCIONES:"
+  echo "   • Revisá los errores arriba ⬆"
+  echo "   • Corré 'npm run lint:fix' para arreglar lo automático"
+  echo "   • Corré 'npm run format' para reformatear todo"
+  echo "   • Volvé a hacer git add y git commit"
+  echo ""
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  exit 1
+fi
+
+echo ""
+echo "✅ Archivos verificados correctamente"
+echo ""
