@@ -1,0 +1,10 @@
+<svg viewBox="0 0 480 110" xmlns="http://www.w3.org/2000/svg">
+    <!-- Ícono a la izquierda -->
+    <g>
+        <path d="M 0,0 H 100 V 40 H 40 V 110 H 0 Z" fill="currentColor" />
+        <rect x="50" y="50" width="50" height="60" fill="currentColor" />
+    </g>
+    <!-- Texto alineado a la derecha -->
+    <text x="130" y="58" font-family="'Inter', sans-serif" font-size="34" font-weight="800" letter-spacing="3" text-anchor="start" fill="currentColor">DORA GALIANO</text>
+    <text x="130" y="88" font-family="'Inter', sans-serif" font-size="16" font-weight="400" letter-spacing="4" text-anchor="start" fill="currentColor">diseño para armar</text>
+</svg>

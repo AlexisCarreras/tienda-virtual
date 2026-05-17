@@ -17,5 +17,7 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "cSpell.language": "en,es,es-AR",
+  "cSpell.words": ["crudo", "Dora", "fontsource", "Fraunces", "Galiano", "mostaza", "terracota"]
 }
