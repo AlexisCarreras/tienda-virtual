@@ -17,5 +17,29 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "cSpell.language": "en,es,es-AR",
+  "cSpell.words": [
+    "CABA",
+    "configurables",
+    "crudo",
+    "Dora",
+    "etags",
+    "firestore",
+    "Firestore",
+    "fontsource",
+    "Fraunces",
+    "galiano",
+    "Galiano",
+    "github",
+    "mergea",
+    "mergear",
+    "mostaza",
+    "Sanitizamos",
+    "Setea",
+    "terracota",
+    "tipada",
+    "webp",
+    "whatsapp"
+  ]
 }
