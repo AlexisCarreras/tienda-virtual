@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "dora-galiano"
+  },
+  "targets": {
+    "dora-galiano": {
+      "hosting": {
+        "prod": [
+          "dora-galiano"
+        ],
+        "staging": [
+          "dora-galiano-develop"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
