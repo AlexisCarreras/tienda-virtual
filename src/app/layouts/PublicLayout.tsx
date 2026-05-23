@@ -6,8 +6,7 @@ import { DarkMode, LightMode } from '@mui/icons-material';
 import { Box, Container, IconButton, Tooltip, Typography, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-import { LoadingScreen } from '@/shared/components/LoadingScreen';
-import { Logo } from '@/shared/components/Logo';
+import { LoadingScreen, Logo } from '@/shared/components';
 import { useThemeStore } from '@/shared/stores/themeStore';
 
 export const PublicLayout = () => {

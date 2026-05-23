@@ -4,7 +4,7 @@ import { Outlet } from 'react-router';
 
 import { Box } from '@mui/material';
 
-import { LoadingScreen } from '@/shared/components/LoadingScreen';
+import { LoadingScreen } from '@/shared/components/LoadingScreen/LoadingScreen';
 
 export const AdminLayout = () => {
   return (

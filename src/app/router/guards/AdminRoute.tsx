@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router';
 
 import { useAuth } from '@/features/auth/hooks/useAuth';
 
-import { LoadingScreen } from '@/shared/components/LoadingScreen';
+import { LoadingScreen } from '@/shared/components/LoadingScreen/LoadingScreen';
 
 export const AdminRoute = () => {
   const { user, isAuthenticated, isLoading } = useAuth();
