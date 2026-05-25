@@ -1,6 +1,6 @@
 import { type ReactElement, type ReactNode } from 'react';
 
-import { Tooltip as MuiTooltip } from '@mui/material';
+import { Box, Tooltip as MuiTooltip } from '@mui/material';
 
 export type TooltipPlacement =
   | 'top'
@@ -45,14 +45,12 @@ export type TooltipProps = {
  *  - Mobile (no hay hover, mejor usá un texto visible).
  *
  * @example
- *   // Tooltip simple
  *   <Tooltip title="Agregar a favoritos">
  *     <IconButton aria-label="Favoritos">
  *       <FavoriteIcon />
  *     </IconButton>
  *   </Tooltip>
  *
- *   // Con posición específica y flecha
  *   <Tooltip title="Producto destacado" placement="right" arrow>
  *     <StarIcon />
  *   </Tooltip>
@@ -100,7 +98,9 @@ export const Tooltip = ({
         },
       }}
     >
-      {children}
+      <Box component="span" sx={{ display: 'inline-flex' }}>
+        {children}
+      </Box>
     </MuiTooltip>
   );
 };
