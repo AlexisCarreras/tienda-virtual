@@ -1,4 +1,4 @@
-import { type RouteObject } from 'react-router';
+import { Navigate, type RouteObject } from 'react-router';
 
 import { AdminLayout } from '@/app/layouts/AdminLayout';
 import { PublicLayout } from '@/app/layouts/PublicLayout';
@@ -17,11 +17,31 @@ import { AccountPage } from '@/pages/AccountPage';
 import { CartPage } from '@/pages/CartPage';
 import { CatalogPage } from '@/pages/CatalogPage';
 import { CheckoutPage } from '@/pages/CheckoutPage';
+import { ComponentsPage } from '@/pages/dev/ComponentsPage';
 import { ErrorPage } from '@/pages/ErrorPage';
 import { HomePage } from '@/pages/HomePage';
 import { LoginPage } from '@/pages/LoginPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProductPage } from '@/pages/ProductPage';
+
+/**
+ * Determina si la página interna `/dev/components` debe ser visible.
+ *
+ * Visible en:
+ *  - Desarrollo local (npm run dev).
+ *  - Staging (dora-galiano-develop.web.app).
+ *
+ * Oculta en:
+ *  - Producción (dora-galiano.web.app) → redirige a home.
+ *
+ * Usamos hostname en runtime porque el build es el mismo para staging y prod
+ * (la única diferencia es a qué Firebase Hosting se deploya).
+ */
+const isDevPageVisible = (): boolean => {
+  if (import.meta.env.DEV) return true;
+  if (typeof window === 'undefined') return false;
+  return !window.location.hostname.includes('dora-galiano.web.app');
+};
 
 export const routes: RouteObject[] = [
   // Sitio público
@@ -34,12 +54,17 @@ export const routes: RouteObject[] = [
       { path: '/producto/:slug', element: <ProductPage /> },
       { path: '/carrito', element: <CartPage /> },
 
+      // Página interna del design system (oculta en producción)
+      {
+        path: '/dev/components',
+        element: isDevPageVisible() ? <ComponentsPage /> : <Navigate to="/" replace />,
+      },
+
       // Rutas solo para no-logueados
       {
         element: <PublicOnlyRoute />,
         children: [{ path: '/login', element: <LoginPage /> }],
       },
-
       // Rutas que requieren login
       {
         element: <ProtectedRoute />,
@@ -48,12 +73,10 @@ export const routes: RouteObject[] = [
           { path: '/cuenta', element: <AccountPage /> },
         ],
       },
-
       // 404 dentro del layout público (mantiene header/footer)
       { path: '*', element: <NotFoundPage /> },
     ],
   },
-
   // Admin
   {
     path: '/admin',
