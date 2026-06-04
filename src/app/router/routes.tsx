@@ -20,6 +20,7 @@ import { CheckoutPage } from '@/pages/CheckoutPage';
 import { ComponentsPage } from '@/pages/dev/ComponentsPage';
 import { ErrorPage } from '@/pages/ErrorPage';
 import { HomePage } from '@/pages/HomePage';
+import { PrivacyPage, ReturnsPage, ShippingPage, TermsPage, WithdrawalPage } from '@/pages/legal';
 import { LoginPage } from '@/pages/LoginPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProductPage } from '@/pages/ProductPage';
@@ -54,12 +55,18 @@ export const routes: RouteObject[] = [
       { path: '/producto/:slug', element: <ProductPage /> },
       { path: '/carrito', element: <CartPage /> },
 
+      // Páginas legales
+      { path: '/terminos', element: <TermsPage /> },
+      { path: '/privacidad', element: <PrivacyPage /> },
+      { path: '/envios', element: <ShippingPage /> },
+      { path: '/cambios', element: <ReturnsPage /> },
+      { path: '/arrepentimiento', element: <WithdrawalPage /> },
+
       // Página interna del design system (oculta en producción)
       {
         path: '/dev/components',
         element: isDevPageVisible() ? <ComponentsPage /> : <Navigate to="/" replace />,
       },
-
       // Rutas solo para no-logueados
       {
         element: <PublicOnlyRoute />,
