@@ -1,86 +1,33 @@
 import { Suspense } from 'react';
 
-import { Outlet, Link as RouterLink } from 'react-router';
+import { Outlet } from 'react-router';
 
-import { DarkMode, LightMode } from '@mui/icons-material';
-import { Box, Container, IconButton, Tooltip, Typography, useMediaQuery } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Box } from '@mui/material';
 
-import { LoadingScreen, Logo } from '@/shared/components';
-import { useThemeStore } from '@/shared/stores/themeStore';
+import { ScrollToTop } from '@/app/router/ScrollToTop';
+
+import { Footer, Header, LoadingScreen } from '@/shared/components';
 
 export const PublicLayout = () => {
-  const mode = useThemeStore((state) => state.mode);
-  const toggleMode = useThemeStore((state) => state.toggleMode);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Box
-        component="header"
-        sx={{
-          borderBottom: 1,
-          borderColor: 'divider',
-          backgroundColor: 'background.paper',
-          position: 'sticky',
-          top: 0,
-          zIndex: (t) => t.zIndex.appBar,
-        }}
-      >
-        <Container
-          maxWidth="lg"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            py: 2,
-          }}
-        >
-          <RouterLink
-            to="/"
-            aria-label="Ir al inicio"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-          >
-            <Logo variant={isMobile ? 'icon' : 'full'} height={isMobile ? 32 : 48} />
-          </RouterLink>
-
-          <Tooltip title={mode === 'light' ? 'Modo oscuro' : 'Modo claro'}>
-            <IconButton onClick={toggleMode} color="inherit">
-              {mode === 'light' ? <DarkMode /> : <LightMode />}
-            </IconButton>
-          </Tooltip>
-        </Container>
-      </Box>
-
-      <Box component="main" sx={{ flex: 1 }}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
-          <Suspense fallback={<LoadingScreen />}>
-            <Outlet />
-          </Suspense>
-        </Container>
-      </Box>
+      <ScrollToTop />
+      <Header />
 
       <Box
-        component="footer"
+        component="main"
         sx={{
-          borderTop: 1,
-          borderColor: 'divider',
-          py: 3,
-          backgroundColor: 'background.paper',
+          flex: 1,
+          pt: { xs: 3, md: 4 },
+          pb: { xs: 4, md: 6 },
         }}
       >
-        <Container maxWidth="lg">
-          <Typography variant="caption" color="text.secondary">
-            diseño para armar — Dora Galiano © {new Date().getFullYear()}
-          </Typography>
-        </Container>
+        <Suspense fallback={<LoadingScreen />}>
+          <Outlet />
+        </Suspense>
       </Box>
+
+      <Footer />
     </Box>
   );
 };

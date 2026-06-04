@@ -4,11 +4,14 @@ import { Outlet } from 'react-router';
 
 import { Box } from '@mui/material';
 
+import { ScrollToTop } from '@/app/router/ScrollToTop';
+
 import { LoadingScreen } from '@/shared/components/LoadingScreen/LoadingScreen';
 
 export const AdminLayout = () => {
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+      <ScrollToTop />
       <Box
         component="aside"
         sx={{
